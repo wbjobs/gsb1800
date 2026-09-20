@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画引擎 · 时间线 / 并发 / 插值 / 60fps</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Animation Engine</h1>
+    <div class="hud">
+      <span>FPS <b id="fps">--</b></span>
+      <span>状态 <b id="mode">--</b></span>
+      <span>时间线 <b id="tl-count">0</b></span>
+      <span>档位 <b id="level">满血</b></span>
+    </div>
+    <div class="controls">
+      <button id="btn-toggle">⏸ 暂停</button>
+      <button id="btn-burst">✦ 并发爆发</button>
+      <label>编排进度 <input id="seek" type="range" min="0" max="1000" value="0"></label>
+    </div>
+    <p id="status">初始化中…</p>
+  </header>
+
+  <main>
+    <canvas id="stage"></canvas>
+    <section class="cards">
+      <div class="card"><h3>时间线</h3><p>多轨道关键帧，delay / loop / yoyo / timeScale</p></div>
+      <div class="card"><h3>并发</h3><p>多时间线并行，additive 轨道叠加不冲突</p></div>
+      <div class="card"><h3>插值</h3><p>数值 / 颜色向量插值 + 10 种缓动函数</p></div>
+      <div class="card"><h3>暂停恢复</h3><p>主时钟剔除暂停时间，WAAPI 同步暂停</p></div>
+      <div class="card"><h3>性能</h3><p>Worker 粒子积分 + 帧预算监控自适应降级</p></div>
+      <div class="card"><h3>异常降级</h3><p>Worker / WAAPI 不可用时自动降级，不崩溃</p></div>
+    </section>
+  </main>
+
+  <script src="js/easing.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
