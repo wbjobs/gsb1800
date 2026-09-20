@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多动画时间线引擎</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="stage-wrap" aria-label="Canvas 动画舞台">
+        <canvas id="stage"></canvas>
+        <div id="title" class="overlay title">ORBITAL LAUNCH</div>
+        <div id="card" class="overlay card">
+          <strong>WAAPI × Canvas × Worker</strong>
+          <span>统一虚拟时间、并发剪辑、插值与暂停恢复</span>
+        </div>
+        <div id="badge" class="overlay badge">60 FPS</div>
+        <div id="error-panel" class="error-panel" hidden></div>
+      </section>
+
+      <section class="panel" aria-label="动画控制">
+        <div class="controls">
+          <button id="play" type="button">播放</button>
+          <button id="reset" type="button">重置</button>
+          <input id="seek" type="range" min="0" max="9000" value="0" step="16" aria-label="时间线进度" />
+        </div>
+
+        <div class="metrics">
+          <div><span>时间</span><strong id="time-label">0.00s / 9.00s</strong></div>
+          <div><span>帧率</span><strong id="fps">-- fps · 丢帧 0</strong></div>
+          <div><span>质量</span><strong id="quality">高</strong></div>
+        </div>
+
+        <div class="status-row">
+          <span class="label">调度</span>
+          <p id="status" data-level="info">正在初始化 Worker…</p>
+        </div>
+
+        <div class="events-wrap">
+          <span class="label">边界事件</span>
+          <ul id="events"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
